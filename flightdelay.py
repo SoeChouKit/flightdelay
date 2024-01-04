@@ -7,7 +7,7 @@ import streamlit as st
 with open('xgbclassifier.pkl', 'rb') as file:
     # Load the pickled model
     classifier = pickle.load(file)
-st.cache_data
+st.cache_dataCacheDataAPIstreamlit.runtime.caching.cache_data_api.CacheDataAPI(decorator_metric_name: 'str', deprecation_warning: 'str | None' = None)
 
 # defining the function which will make the prediction using the data which the user inputs
 def prediction(Airline, OriginCityName, Diverted, DistanceGroup, Quarter,

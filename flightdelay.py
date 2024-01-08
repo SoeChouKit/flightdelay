@@ -1018,11 +1018,11 @@ def main():
     # when 'Predict' is clicked, make the prediction and store it
     if st.button("Predict"):
         result = prediction(Airline, OriginCityName, Diverted, DistanceGroup, Quarter,Month, DayofMonth, DayOfWeek, TaxiOut, DepTime,DepTimeBlk)
-        st.success('Your Flight is {}'.format(result))
+     
         if result == 1:
-            st.error('Your Flight is delay.')
+            st.error('Your Flight is Potentially Delay !!!!')
         else:
-           st.success('Your Flight is no delay.')
+           st.success('Your Flight is No Delay.')
         
 
             

@@ -1022,9 +1022,9 @@ def main():
     if st.button("Predict"):
         result = prediction(Airline, OriginCityName, Diverted, DistanceGroup, Quarter,Month, DayofMonth, DayOfWeek, TaxiOut, DepTime,DepTimeBlk)
         if result == 1:
-            st.success('Your Flight is Delay')
+            st.error('Your Flight is Delay')
         else:
-            st.failure('Your Fligth is No Delay')
+            st.success('Your Fligth is No Delay')
             
 
 if __name__=='__main__':

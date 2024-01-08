@@ -1003,7 +1003,6 @@ def main():
                                                     "Seattle, WA","Sheridan, WY","Shreveport, LA","Sioux City, IA","Sioux Falls, SD", "Sitka, AK",
                                                     "South Bend, IN","Spokane, WA","Springfield, IL","Springfield, MO","St. Cloud, MN","St. George, UT","St. Louis, MO","St. Petersburg, FL","State College, PA",
                                                     "Staunton, VA","Stillwater, OK", "Stockton, CA","Sun Valley/Hailey/Ketchum, ID","Syracuse, NY","Tallahassee, FL","Tampa, FL","Texarkana, AR","Toledo, OH","Traverse City, MI","Trenton, NJ","Tucson, AZ","Tulsa, OK","Twin Falls, ID","Tyler, TX","Valdosta, GA", "Valparaiso, FL","Vernal, UT","Victoria, TX","Waco, TX","Walla Walla, WA","Washington, DC","Waterloo, IA","Watertown, NY","Watertown, SD","Wenatchee, WA","West Palm Beach/Palm Beach, FL","West Yellowstone, MT","White Plains, NY","Wichita Falls, TX","Wichita, KS","Williamsport, PA","Williston, ND","Wilmington, DE","Wilmington, NC","Worcester, MA","Wrangell, AK","Yakima, WA","Yakutat, AK","Yuma, AZ"))
-    Diverted= st.selectbox('Diverted',("True","False"))
     DistanceGroup = st.selectbox('Distance Group',("1(0-250 Miles)","2(251-500 Miles)","3(501-750 Miles)","4(751-1000 Miles)","5(1001-1250 Miles)",
                                                     "6(1251-1500 Miles)","7(1501-1750 Miles)","8(1751-2000 Miles)","9(2001-2250 Miles)",
                                                     "10(2501-2750 Miles)","11(2751-3000 Miles)"))
@@ -1011,7 +1010,8 @@ def main():
     Month=st.selectbox('Month',("January","February","March","April","May","June","July","August","September","October", "November","December"))
     DayofMonth = st.number_input("Date", min_value=1, max_value=31, value=1, step=1)
     DayOfWeek = st.selectbox('Day of Week',("Monday","Tuesday","Wednesday","Thrusday","Friday","Saturday","Sunday"))
-    TaxiOut = st.number_input("Taxi Out(Min)")
+    TaxiOut = st.number_input("Taxi Out(Min)-Optional",min_value=0, max_value=2359, value=0000, step=1)
+    Diverted= st.selectbox('Diverted-Optional',("True","False"))
     DepTime = st.number_input("Departure Time",min_value=0, max_value=2359, value=0000, step=1)
     DepTimeBlk = st.selectbox('Time Block',("0001-0559","0600-0659","0700-0759","0800-0859","0900-0959","1000-1059","1100-1159",
                                             "1200-1259","1300-1359","1400-1459","1500-1559","1600-1659","1700-1759", "1800-1859",
@@ -1021,7 +1021,11 @@ def main():
     # when 'Predict' is clicked, make the prediction and store it
     if st.button("Predict"):
         result = prediction(Airline, OriginCityName, Diverted, DistanceGroup, Quarter,Month, DayofMonth, DayOfWeek, TaxiOut, DepTime,DepTimeBlk)
-        st.success('Your Flight is {}'.format(result))
+        st.markdown(
+            f'<div style="background-color:{"#ffcccb" if result == 1 else "inherit"}; padding:10px;">Your Flight is Delay {label1}</div>'
+            f'<div style="background-color:{"#90ee90" if result == 0 else "inherit"}; padding:10px;">Your Flight is No Delay  {label2}</div>',
+            unsafe_allow_html=True
+            )  
 
 if __name__=='__main__':
     main()

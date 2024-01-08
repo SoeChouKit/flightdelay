@@ -1022,9 +1022,9 @@ def main():
     if st.button("Predict"):
         result = prediction(Airline, OriginCityName, Diverted, DistanceGroup, Quarter,Month, DayofMonth, DayOfWeek, TaxiOut, DepTime,DepTimeBlk)
         if result == 1:
-            st.markdown(f'<div style="background-color:red; padding:10px;">Your Flight is Delay</div>')
+            st.success('Your Flight is Delay')
         else:
-            st.markdown(f'<div style="background-color:green; padding:10px;">Your Flight is No Delay</div>')
+            st.failure('Your Fligth is No Delay')
             
 
 if __name__=='__main__':

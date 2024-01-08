@@ -1021,7 +1021,7 @@ def main():
     # when 'Predict' is clicked, make the prediction and store it
     if st.button("Predict"):
         result = prediction(Airline, OriginCityName, Diverted, DistanceGroup, Quarter,Month, DayofMonth, DayOfWeek, TaxiOut, DepTime,DepTimeBlk)
-            st.success('Your Flight is {}'.format(result))
+        st.success('Your Flight is {}'.format(result))
 
             
 

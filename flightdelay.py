@@ -958,11 +958,11 @@ def prediction(Airline, OriginCityName, Diverted, DistanceGroup, Quarter,
         [[Airline, OriginCityName, Diverted, DistanceGroup, Quarter,
                        Month, DayofMonth, DayOfWeek, TaxiOut, DepTime,DepTimeBlk]])
 
-    if prediction == 1:
-        pred = 'DELAY'
-    else:
-        pred = 'NO DELAY'
-    return pred
+    #if prediction == 1:
+       # pred = 'DELAY'
+    #else:
+      #  pred = 'NO DELAY'
+   # return pred
 
 ##<div style ="background-color:yellow;padding:13px">
 # this is the main function in which we define our webpage
@@ -1022,8 +1022,8 @@ def main():
     if st.button("Predict"):
         result = prediction(Airline, OriginCityName, Diverted, DistanceGroup, Quarter,Month, DayofMonth, DayOfWeek, TaxiOut, DepTime,DepTimeBlk)
         st.markdown(
-            f'<div style="background-color:{"#ffcccb" if result == 'Delay' else "inherit"}; padding:10px;">Your Flight is Delay {label1}</div>'
-            f'<div style="background-color:{"#90ee90" if result == 'No Delay' else "inherit"}; padding:10px;">Your Flight is No Delay  {label2}</div>',
+            f'<div style="background-color:{"#ffcccb" if result == 1 else "inherit"}; padding:10px;">Your Flight is Delay {label1}</div>'
+            f'<div style="background-color:{"#90ee90" if result == 0 else "inherit"}; padding:10px;">Your Flight is No Delay  {label2}</div>',
             unsafe_allow_html=True
             )  
 

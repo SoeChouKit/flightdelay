@@ -1011,7 +1011,7 @@ def main():
     DayofMonth = st.number_input("Date", min_value=1, max_value=31, value=1, step=1)
     DayOfWeek = st.selectbox('Day of Week',("Monday","Tuesday","Wednesday","Thrusday","Friday","Saturday","Sunday"))
     TaxiOut = st.number_input("Taxi Out(Min)-Optional",min_value=0, max_value=2359, value=0000, step=1)
-    Diverted= st.selectbox('Diverted-Optional',("True","False"))
+    Diverted= st.selectbox('Diverted-Optional',("False","True"))
     DepTime = st.number_input("Departure Time",min_value=0, max_value=2359, value=0000, step=1)
     DepTimeBlk = st.selectbox('Time Block',("0001-0559","0600-0659","0700-0759","0800-0859","0900-0959","1000-1059","1100-1159",
                                             "1200-1259","1300-1359","1400-1459","1500-1559","1600-1659","1700-1759", "1800-1859",
@@ -1022,8 +1022,8 @@ def main():
     if st.button("Predict"):
         result = prediction(Airline, OriginCityName, Diverted, DistanceGroup, Quarter,Month, DayofMonth, DayOfWeek, TaxiOut, DepTime,DepTimeBlk)
         st.markdown(
-            f'<div style="background-color:{"#ffcccb" if result == 1 else "inherit"}; padding:10px;">Your Flight is Delay {label1}</div>'
-            f'<div style="background-color:{"#90ee90" if result == 0 else "inherit"}; padding:10px;">Your Flight is No Delay  {label2}</div>',
+            f'<div style="background-color:{"#ffcccb" if result == 'Delay' else "inherit"}; padding:10px;">Your Flight is Delay {label1}</div>'
+            f'<div style="background-color:{"#90ee90" if result == 'No Delay' else "inherit"}; padding:10px;">Your Flight is No Delay  {label2}</div>',
             unsafe_allow_html=True
             )  
 

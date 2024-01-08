@@ -1024,7 +1024,7 @@ def main():
         if result == 1:
             st.error('Your Flight is Delay')
         else:
-            st.success('Your Fligth is No Delay')
+            st.success('Your Flight is No Delay')
             
 
 if __name__=='__main__':

@@ -1021,11 +1021,14 @@ def main():
     # when 'Predict' is clicked, make the prediction and store it
     if st.button("Predict"):
         result = prediction(Airline, OriginCityName, Diverted, DistanceGroup, Quarter,Month, DayofMonth, DayOfWeek, TaxiOut, DepTime,DepTimeBlk)
-        st.markdown(
-            f'<div style="background-color:{"#ffcccb" if result == 1 else "inherit"}; padding:10px;">Your Flight is Delay</div>'
-            f'<div style="background-color:{"#90ee90" if result == 0 else "inherit"}; padding:10px;">Your Flight is No Delay</div>',
-            unsafe_allow_html=True
-            )  
+        if result == 1:
+            st.markdown(
+                f'<div style="background-color:red; padding:10px;">Your Flight is Delay</div>'
+        else:
+                f'<div style="background-color:green; padding:10px;">Your Flight is No Delay</div>'
+                unsafe_allow_html=True
+            )
+            
 
 if __name__=='__main__':
     main()
